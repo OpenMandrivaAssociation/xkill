@@ -1,9 +1,12 @@
 Name: xkill
 Version: 1.0.1
-Release: %mkrel 3
+Release: %mkrel 4
 Summary: Kill a client by its X resource
 Group: Development/X11
 Source: http://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.bz2
+Source11:   %{name}-mini.png
+Source12:   %{name}-std.png
+Source13:   %{name}-large.png
 License: MIT
 BuildRoot: %{_tmppath}/%{name}-root
 
@@ -29,12 +32,40 @@ displayed undesired windows on a user's screen.
 rm -rf %{buildroot}
 %makeinstall_std
 
+mkdir -p $RPM_BUILD_ROOT%{_datadir}/applications
+cat > $RPM_BUILD_ROOT%{_datadir}/applications/mandriva-%{name}.desktop << EOF
+[Desktop Entry]
+Encoding=UTF-8
+Name=XKill
+Comment=%Summary
+Exec=/usr/bin/xkill
+Icon=xkill
+Terminal=false
+Type=Application
+StartupNotify=true
+Categories=System;X-MandrivaLinux-System-Monitoring;
+EOF
+
+install -m644 %{SOURCE11} -D $RPM_BUILD_ROOT%{_miconsdir}/xkill.png
+install -m644 %{SOURCE12} -D $RPM_BUILD_ROOT%{_iconsdir}/xkill.png
+install -m644 %{SOURCE13} -D $RPM_BUILD_ROOT%{_liconsdir}/xkill.png
+
 %clean
 rm -rf %{buildroot}
+
+%post
+%update_menus
+
+%postun
+%clean_menus
 
 %files
 %defattr(-,root,root)
 %{_bindir}/xkill
 %{_mandir}/man1/xkill.1x.bz2
+%_datadir/applications/mandriva-%{name}.desktop
+%{_miconsdir}/xkill.png
+%{_iconsdir}/xkill.png
+%{_liconsdir}/xkill.png
 
 
