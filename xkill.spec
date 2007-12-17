@@ -8,7 +8,6 @@ Source11:   %{name}-mini.png
 Source12:   %{name}-std.png
 Source13:   %{name}-large.png
 License: MIT
-BuildRoot: %{_tmppath}/%{name}-root
 
 BuildRequires: libx11-devel >= 1.0.0
 BuildRequires: libxmu-devel >= 1.0.0
