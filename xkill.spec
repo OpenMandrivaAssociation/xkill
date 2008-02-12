@@ -10,9 +10,9 @@ Source13:   %{name}-large.png
 License: MIT
 BuildRoot: %{_tmppath}/%{name}-root
 
-BuildRequires: x11-util-macros	>= 1.1.5
-BuildRequires: libx11-devel	>= 1.1.3
-BuildRequires: libxmu-devel	>= 1.0.3
+BuildRequires: libx11-devel >= 1.0.0
+BuildRequires: libxmu-devel >= 1.0.0
+BuildRequires: x11-util-macros >= 1.0.1
 
 %description
 Xkill is a utility for forcing the X server to close connections to clients.
@@ -23,7 +23,7 @@ displayed undesired windows on a user's screen.
 %setup -q -n %{name}-%{version}
 
 %build
-%configure	--x-includes=%{_includedir}\
+%configure2_5x	--x-includes=%{_includedir}\
 		--x-libraries=%{_libdir}
 
 %make
