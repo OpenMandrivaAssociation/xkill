@@ -1,5 +1,5 @@
 Name: xkill
-Version: 1.0.2
+Version: 1.0.3
 Release: %mkrel 1
 Summary: Kill a client by its X resource
 Group: Monitoring
