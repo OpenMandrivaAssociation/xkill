@@ -1,6 +1,6 @@
 Name: xkill
 Version: 1.0.3
-Release: %mkrel 1
+Release: %mkrel 2
 Summary: Kill a client by its X resource
 Group: Monitoring
 Source: http://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.bz2
