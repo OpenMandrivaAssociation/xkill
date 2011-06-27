@@ -1,6 +1,6 @@
 Name: xkill
 Version: 1.0.3
-Release: %mkrel 2
+Release: %mkrel 3
 Summary: Kill a client by its X resource
 Group: Monitoring
 Source: http://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.bz2
@@ -44,6 +44,7 @@ Terminal=false
 Type=Application
 StartupNotify=true
 Categories=System;Monitor;
+NoDisplay=true
 EOF
 
 install -m644 %{SOURCE11} -D $RPM_BUILD_ROOT%{_miconsdir}/xkill.png
