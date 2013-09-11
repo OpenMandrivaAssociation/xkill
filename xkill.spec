@@ -1,6 +1,6 @@
 Name: xkill
-Version: 1.0.3
-Release: 6
+Version: 1.0.4
+Release: 1
 Summary: Kill a client by its X resource
 Group: Monitoring
 Source0: http://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.bz2
@@ -31,8 +31,8 @@ autoreconf -fi
 %install
 %makeinstall_std
 
-mkdir -p $RPM_BUILD_ROOT%{_datadir}/applications
-cat > $RPM_BUILD_ROOT%{_datadir}/applications/mandriva-%{name}.desktop << EOF
+mkdir -p %{buildroot}%{_datadir}/applications
+cat > %{buildroot}%{_datadir}/applications/mandriva-%{name}.desktop << EOF
 [Desktop Entry]
 Encoding=UTF-8
 Name=XKill
@@ -46,9 +46,9 @@ Categories=System;Monitor;
 NoDisplay=true
 EOF
 
-install -m644 %{SOURCE11} -D $RPM_BUILD_ROOT%{_miconsdir}/xkill.png
-install -m644 %{SOURCE12} -D $RPM_BUILD_ROOT%{_iconsdir}/xkill.png
-install -m644 %{SOURCE13} -D $RPM_BUILD_ROOT%{_liconsdir}/xkill.png
+install -m644 %{SOURCE11} -D %{buildroot}%{_miconsdir}/xkill.png
+install -m644 %{SOURCE12} -D %{buildroot}%{_iconsdir}/xkill.png
+install -m644 %{SOURCE13} -D %{buildroot}%{_liconsdir}/xkill.png
 
 %files
 %{_bindir}/xkill
